@@ -1,0 +1,20 @@
+#spring.application.name=FinalJournal
+#spring.data.mongodb.uri=mongodb+srv://swapnaneellogin16:Neel007@cluster0.epslmxz.mongodb.net/?appName=Cluster0
+#spring.data.mongodb.database=FinalJournal
+#
+##spring.data.mongodb.username=myJournalUser
+##spring.data.mongodb.password=Neel@007
+#spring.data.mongodb.auto-index-creation=true
+
+spring:
+  application:
+    name: FinalJournal
+  data:
+    mongodb:
+      uri: mongodb+srv://swapnaneellogin16:Neel007@cluster0.epslmxz.mongodb.net/?appName=Cluster0
+      database: FinalJournal
+      auto-index-creation: true
+server:
+  port: 8080
+  servlet:
+    context-path: /journal
