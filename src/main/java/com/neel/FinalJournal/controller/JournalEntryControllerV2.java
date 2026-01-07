@@ -4,6 +4,7 @@ import com.neel.FinalJournal.entity.JournalEntry;
 import com.neel.FinalJournal.entity.User;
 import com.neel.FinalJournal.service.JournalEntryService;
 import com.neel.FinalJournal.service.UserService;
+import com.neel.FinalJournal.service.WeatherService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +25,7 @@ public class JournalEntryControllerV2 {
 
     @Autowired
     private UserService userService;
+
 
     @GetMapping
     public ResponseEntity<?> getAllJournalEntriesOfUser(){

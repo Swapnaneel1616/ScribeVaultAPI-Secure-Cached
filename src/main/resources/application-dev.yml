@@ -14,7 +14,32 @@ spring:
       uri: mongodb+srv://swapnaneellogin16:Neel007@cluster0.epslmxz.mongodb.net/?appName=Cluster0
       database: FinalJournal
       auto-index-creation: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: neellaltu2@gmail.com
+    password: dnft bule vcxd lsfu
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+
+
 server:
   port: 8080
   servlet:
     context-path: /journal
+
+
+weather:
+  api:
+    key: c79c9188a89616e01545d70b20b92366
+
+
+weather_api_key: c79c9188a89616e01545d70b20b92366
+
+

@@ -1,8 +1,10 @@
 package com.neel.FinalJournal.controller;
 
+import com.neel.FinalJournal.api.response.WeatherResponse;
 import com.neel.FinalJournal.entity.User;
 import com.neel.FinalJournal.repository.UserEntryRepository;
 import com.neel.FinalJournal.service.UserService;
+import com.neel.FinalJournal.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,9 @@ public class UserEntryController {
     @Autowired
     private UserEntryRepository userEntryRepository;
 
+    @Autowired
+    private WeatherService weatherService;
+
 
      @PutMapping
      public ResponseEntity<?> updateUser(@RequestBody User user){
@@ -28,6 +33,7 @@ public class UserEntryController {
          User byUserName = userService.findByUserName(name);
          byUserName.setUsername(user.getUsername());
          byUserName.setPassword(user.getPassword());
+         byUserName.setEmail(user.getEmail());
          userService.saveNewUser(byUserName);
          return new ResponseEntity<>(HttpStatus.NO_CONTENT);
      }
@@ -40,5 +46,17 @@ public class UserEntryController {
 
          return new ResponseEntity<>(HttpStatus.NO_CONTENT);
      }
+
+    @GetMapping
+    public ResponseEntity<?> greetings(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        WeatherResponse weatherResponse = weatherService.getWeather("Kolkata");
+        String greeting = "";
+        if(weatherResponse!= null){
+            greeting = "Weather feels like " + weatherResponse.getCurrent().getFeelslike();
+        }
+        return new ResponseEntity<>("HI "+ authentication.getName()+" "+ greeting ,HttpStatus.OK);
+    }
+
 
 }
